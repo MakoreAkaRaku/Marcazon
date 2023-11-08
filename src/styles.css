@@ -38,7 +38,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    background-color: rgba(38, 77, 50, 0.7);
+    background-color: rgba(23, 21, 21, 0.7);
     color: snow;
     border-color: #232121;
     border-width: 5px;
@@ -52,7 +52,7 @@
     display: inherit;
     border: none;
     border-width: 1px;
-    padding:  5px 10px;
+    padding: 5px 10px;
     color: snow;
     font-family: inherit;
     background-color: #232121;
@@ -61,17 +61,17 @@
     font-size: inherit;
 }
 
-.login-field input:focus, .login-field button:hover {
+.login-field input:focus {
     transition-duration: 50ms;
     transform: scale(1.1, 1.1);
-    outline-style: outset;
+    outline-style: none;
     outline-color: black;
 }
 
-.login-field button:hover {
+.login-field button:hover,.login-field button:focus {
     transition-duration: 50ms;
     transform: scale(1.1, 1.1);
-    outline-style: outset;
+    outline-style: none;
     outline-color: black;
 }
 
@@ -83,18 +83,10 @@
     border-width: 1px;
     padding: 10px 20px;
     font-size: 17px;
-    color:snow;
+    color: snow;
     font-family: inherit;
-    background-color: grey;
+    background-image: linear-gradient( #312f2f 0%, rgb(32, 32, 32) 100%);;
     border-radius: 3px;
-    border-color:#242424;
-}
-
-.login-field  {
-    transition-duration: 50ms;
-    transform: scale(1.1, 1.1);
-    box-shadow: 2px 2px #0005;
-    outline-color: black;
 }
 
 .login-body {
