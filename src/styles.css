@@ -1,0 +1,109 @@
+.Menu {
+    background-color: #414141;
+    padding: 1%;
+    border-radius: 2cm;
+    font-style: normal;
+    font-size: 16px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: antiquewhite;
+    position: sticky;
+    display: flex;
+    flex-flow: row;
+    /*flex-direction: row;*/
+    justify-content: space-between;
+    /*text-align: center;*/
+}
+
+.menu-item {
+    padding: inherit;
+    border-radius: inherit;
+}
+
+.menu-item:hover {
+    background-color: #313131;
+    color: aliceblue;
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.login-field {
+    border-radius: 5px;
+    box-shadow: 15px 15px #0005;
+    line-height: 50px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: rgba(38, 77, 50, 0.7);
+    color: snow;
+    border-color: #232121;
+    border-width: 5px;
+    font-size: 16px;
+    width: 50vh;
+    height: 50vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-field input {
+    display: inherit;
+    border: none;
+    border-width: 1px;
+    padding:  5px 10px;
+    color: snow;
+    font-family: inherit;
+    background-color: #232121;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: inherit;
+}
+
+.login-field input:focus, .login-field button:hover {
+    transition-duration: 50ms;
+    transform: scale(1.1, 1.1);
+    outline-style: outset;
+    outline-color: black;
+}
+
+.login-field button:hover {
+    transition-duration: 50ms;
+    transform: scale(1.1, 1.1);
+    outline-style: outset;
+    outline-color: black;
+}
+
+
+.login-field button {
+    margin-top: 20px;
+    display: inherit;
+    border: none;
+    border-width: 1px;
+    padding: 10px 20px;
+    font-size: 17px;
+    color:snow;
+    font-family: inherit;
+    background-color: grey;
+    border-radius: 3px;
+    border-color:#242424;
+}
+
+.login-field  {
+    transition-duration: 50ms;
+    transform: scale(1.1, 1.1);
+    box-shadow: 2px 2px #0005;
+    outline-color: black;
+}
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(45deg, #FC466B 0%, #3F5EFB 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
