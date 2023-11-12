@@ -3,7 +3,6 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "marcazon";
-
 // Crea connexió
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 // verifica si la connexió ha sigut exitosa
