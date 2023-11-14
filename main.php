@@ -9,6 +9,7 @@ include_once("phpQs/config.php");
     <title>Marcazon</title>
     <link rel="stylesheet" href="pending">
     <link rel="icon" href="https://www.w3schools.com/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <header>
 </header>
@@ -54,8 +55,6 @@ include_once("phpQs/config.php");
             echo "<div class=\"product\">".$product["nomProd"]."</div>";
         }
         ?>
-        <div class="product"> this is a product</div>
-        <div class="product"> this is a product</div>
     </div>
 </body>
 
