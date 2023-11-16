@@ -47,4 +47,8 @@ function input($type, $name,$classes, $placeholder= '')
     echo '>';
 }
 
+function select($options, $name, $classes) {
+    
+}
+
 ?>

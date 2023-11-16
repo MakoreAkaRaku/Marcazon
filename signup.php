@@ -1,4 +1,5 @@
 <?php
+$roles = ["Comprador","Venedor","Controlador"];
 include_once("config/config.php");
 include_once("components/elements.php");
 $products = mysqli_query($conn, "SELECT * FROM Producte");
@@ -20,8 +21,15 @@ include_once("config/head.php");
       input("text", "name", $inClasses, "Nom Cognom");
       input("text", "nickname", $inClasses, "NickName");
       input("password", "pwd", $inClasses, "Contrasenya");
-      ?>
-      <?php darkButton("submit", "w-full md:hidden", "Registrar-se") ?>
+      //COMMENT BEGIN
+      echo '<select>';
+      foreach ($roles as $role) {
+        echo '<option value="' . $role . '">' . $role . '</option>';
+      }
+      echo '</select>';
+      //COMMENT END
+      darkButton("submit", "w-full md:hidden", "Registrar-se")
+        ?>
       <div class="hidden md:flex flex-row w-full justify-center">
         <?php darkButton("submit", "", "Registrar-se") ?>
       </div>
