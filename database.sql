@@ -60,7 +60,7 @@ CREATE TABLE Distribuidor(
 );
 
 CREATE TABLE Repartidor(
-    idRep int PRIMARY KEY,
+    idRep int AUTO_INCREMENT PRIMARY KEY,
     nom varchar(30) NOT NULL,
     idDistr int,
     CONSTRAINT FOREIGN KEY(idDistr) REFERENCES Distribuidor(idDistr)

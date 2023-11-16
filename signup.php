@@ -1,12 +1,12 @@
 <?php
-include_once("phpQs/config/config.php");
+include_once("config/config.php");
 include_once("components/elements.php");
 $products = mysqli_query($conn, "SELECT * FROM Producte");
 ?>
 <!DOCTYPE html>
 <html>
 <?php
-include_once("phpQs/config/head.php");
+include_once("config/head.php");
 ?>
 
 <body class="h-screen overflow-hidden flex items-center justify-center"
