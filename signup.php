@@ -19,12 +19,12 @@ include_once("config/head.php");
       <?php
       $inClasses = 'focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
       input("text", "name", $inClasses, "Nom Cognom");
-      input("text", "nickname", $inClasses, "NickName");
-      input("password", "pwd", $inClasses, "Contrasenya");
+      input("text", "nickname", $inClasses, "Nickname", true);
+      input("password", "pwd", $inClasses, "Contrasenya", true);
       ?>
       <div>
         <?php
-        select($roles, "role", "bg-white/10 text-white", "text-black");
+        select($roles, "role","bg-white/10 text-white", "text-black");
         ?>
       </div>
       <?php

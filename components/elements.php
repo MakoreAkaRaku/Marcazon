@@ -36,28 +36,29 @@ function h1($text, $classes)
 }
 
 
-function input($type, $name,$classes, $placeholder= '')
+function input($type, $name, $classes, $placeholder = '', bool $isRequired = false)
 {
     $styleClasses = 'mt-1 p-2 w-full border rounded-md  focus:outline-none';
     echo '<input ';
-    echo 'type="'.$type.'" ';
-    echo 'id="'.$name.'" '.'name="'.$name.'" ';
-    echo 'placeholder="'.$placeholder.'" ';
-    applyClasses($styleClasses,$classes);
+    echo 'type="' . $type . '" ';
+    echo 'id="' . $name . '" ' . 'name="' . $name . '" ';
+    echo 'placeholder="' . $placeholder . '" ';
+    echo $isRequired ? 'required ' : '';
+    applyClasses($styleClasses, $classes);
     echo '>';
 }
 
-function select($options, $name, $selClasses, $optClasses) {
+function select($options, $name, $selClasses, $optClasses, bool $isRequired = false)
+{
     $styleClasses = "mt-1 p-2 w-full border rounded-md  focus:outline-none";
     echo '<select ';
-    echo 'id="'.$name.'" name=" '.$name.'" ';
-    applyClasses($styleClasses,$selClasses);
+    echo 'id="' . $name . '" name=" ' . $name . '" ';
+    applyClasses($styleClasses, $selClasses);
     echo '>';
-    // soc tonto 
     foreach ($options as $opt) {
-      echo '<option ';
-      applyClasses($styleClasses,$optClasses);
-      echo ' value="' . $opt . '">' . $opt . '</option>';
+        echo '<option ';
+        applyClasses($styleClasses, $optClasses);
+        echo ' value="' . $opt . '">' . $opt . '</option>';
     }
     echo '</select>';
 }

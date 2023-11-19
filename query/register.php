@@ -6,17 +6,19 @@ if (!empty($_POST)) {
     $pwd = $_POST['pwd'];
     $role = $_POST['role'];
     $query = "INSERT INTO ";
-    $query .= $role.' ';
+    $query .= $role . ' ';
     $role != 'Venedor' ? $query .= '(nom, nickname, pwd) VALUES("' . $name . '","' . $nickname . '","' . $pwd . '");' :
         $query .= '(nom, nickname, pwd, estatVen) VALUES("' . $name . '","' . $nickname . '","' . $pwd . '","BO");';
-    if (!exist($nickname,$role) && mysqli_query($GLOBALS["conn"], $query)) {
+    if (!existUserType($nickname, $role) and mysqli_query($GLOBALS["conn"], $query)) {
         login($nickname, $pwd, $role);
-        header('location: /main.php');
+        header('location: /Marcazon/main.php');
         exit;
     } else {
-        die(":( WHAT DID YOU DO");
+        mysqli_error($GLOBALS["conn"]);
+        die("Oops, looks like this nickname is already taken");
     }
 } else {
-    exit;
+    mysqli_error($GLOBALS["conn"]);
+    die("Did you try to come here without registering to the page? >:(");
 }
 ?>

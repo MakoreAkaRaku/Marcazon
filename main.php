@@ -1,6 +1,6 @@
 <?php
 include_once("config/config.php");
-$products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
+$Allproducts = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,16 +11,12 @@ include_once("config/head.php");
 <body>
     <div class="nav-bar">
         <?php
-        if (!empty($_SESSION) && !empty($_SESSION["role"])) {
+        if (!empty($_SESSION)) {
             $role = $_SESSION["role"];
-            if (!empty($role)) {
-                $role = $_SESSION["role"];
-            }
-            else {
-                # code...
-            }
+            $nick = $_SESSION["nickname"];
             echo "<div class=\"user-icon\">UserIconIdentity</div>";
-
+            echo "Bones, $nick";
+            $timePassed = time();
         } else {
             echo "<div class=\"user-icon\">UserIconNonIdentity</div>";
         }
@@ -28,11 +24,13 @@ include_once("config/head.php");
         <div>Here there's gonna be the search bar</div>
         <div>static basket or cesta for the buyer</div>
         <?php
-        if (!empty($role)) {
+        if (!empty($role))
+        {
             $srcImg = ($role == "vendor") ? "price-tag.svg":"control-opt.svg";
             echo "<div> <img alt=\"$role options\" src=$srcImg></div>";
         }
-         if (!empty ($_SESSION)){
+         if (!empty ($nick))
+         {
             echo "<div> <img alt=\"user options\" src=styles/config.svg></div>";
          }
         ?>
@@ -43,7 +41,7 @@ include_once("config/head.php");
     </div>
     <div class="product-list">
         <?php
-        while ($product = mysqli_fetch_array($products)) {
+        while ($product = mysqli_fetch_array($Allproducts)) {
             echo "<div class=\"product\">" . $product["nomProd"] . "</div>";
         }
         ?>

@@ -1,6 +1,7 @@
 <?php
 include_once("config/config.php");
 include_once("components/elements.php");
+
 $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 ?>
 <!DOCTYPE html>
@@ -14,11 +15,11 @@ include_once("config/head.php");
   <div
     class="flex flex-col p-6 bg-black/70 w-full m-6 md:m-0 md:w-2/3 flex items-center justify-center rounded-lg max-w-md">
     <?php h1("INICIAR SESSIÓ", "text-white text-center") ?>
-    <form action="#" method="POST" class="flex flex-col gap-4 w-full ">
+    <form action="query/login.php" method="POST" class="flex flex-col gap-4 w-full ">
       <?php
       $inClasses = 'focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
-      input("text", "nickname", $inClasses, "NickName");
-      input("password", "pwd", $inClasses, "Contrasenya");
+      input("text", "nickname", $inClasses, "Nickname", true);
+      input("password", "pwd", $inClasses, "Contrasenya", true);
       ?>
       <?php darkButton("submit", "w-full md:hidden", "Entra") ?>
       <div class="hidden md:flex flex-row w-full justify-center">
