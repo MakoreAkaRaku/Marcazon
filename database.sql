@@ -71,7 +71,6 @@ CREATE TABLE Categoria (cat varchar(20) PRIMARY KEY);
 CREATE TABLE Producte(
     nomProd varchar(50) PRIMARY KEY,
     pathImg varchar(200),
-    descripcio varchar(500)
 );
 
 CREATE TABLE ProdCat(
