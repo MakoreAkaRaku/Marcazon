@@ -47,8 +47,19 @@ function input($type, $name,$classes, $placeholder= '')
     echo '>';
 }
 
-function select($options, $name, $classes) {
-    
+function select($options, $name, $selClasses, $optClasses) {
+    $styleClasses = "mt-1 p-2 w-full border rounded-md  focus:outline-none";
+    echo '<select ';
+    echo 'id="'.$name.'" name=" '.$name.'" ';
+    applyClasses($styleClasses,$selClasses);
+    echo '>';
+    // soc tonto 
+    foreach ($options as $opt) {
+      echo '<option ';
+      applyClasses($styleClasses,$optClasses);
+      echo ' value="' . $opt . '">' . $opt . '</option>';
+    }
+    echo '</select>';
 }
 
 ?>
