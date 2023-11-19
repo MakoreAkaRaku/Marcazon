@@ -1,7 +1,7 @@
 <?php
 include_once("config/config.php");
 include_once("components/elements.php");
-$products = mysqli_query($conn, "SELECT * FROM Producte");
+$products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 ?>
 <!DOCTYPE html>
 <html>
