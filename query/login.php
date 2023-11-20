@@ -10,7 +10,6 @@ if (!empty($_POST)) {
                 exit;
             } else {
                 die("Wrong password or nickname");
-                exit;
             }
         }
     }
