@@ -29,11 +29,12 @@ function redirectIfSessionAlive()
         exit;
     }
 }
-function logout($nick): bool
+function logout(): bool
 {
     include_once("../config/config.php");
     session_start();
     unset($_SESSION['user']);
+    unset($_SESSION['pwd']);
     unset($_SESSION['role']);
     return session_destroy();
 }
