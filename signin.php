@@ -1,5 +1,9 @@
 <?php
 include_once("config/config.php");
+if (!empty($_SESSION)) {
+  header('location: /Marcazon/main.php');
+  exit;
+}
 include_once("components/elements.php");
 
 $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");

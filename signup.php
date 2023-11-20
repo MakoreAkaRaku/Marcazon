@@ -1,5 +1,9 @@
 <?php
 include_once("config/config.php");
+if (!empty($_SESSION)) {
+  header('location: /Marcazon/main.php');
+  exit;
+}
 include_once("components/elements.php");
 $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 ?>
@@ -14,9 +18,6 @@ include_once("config/head.php");
   <div
     class="flex flex-col p-6 bg-black/70 w-full m-6 md:m-0 md:w-2/3 flex items-center justify-center rounded-lg max-w-md">
     <?php h1("REGISTRAR-SE", "text-white text-center");
-    if(!empty($_SESSION)){
-      echo "Session is not empty!";
-    }
     ?>
     <form action="query/register.php" method="POST" class="flex flex-col gap-4 w-full ">
       <?php
@@ -27,7 +28,7 @@ include_once("config/head.php");
       ?>
       <div>
         <?php
-        select($GLOBALS["roles"], "role","bg-white/10 text-white", "text-black");
+        select($GLOBALS["roles"], "role", "bg-white/10 text-white", "text-black");
         ?>
       </div>
       <?php
