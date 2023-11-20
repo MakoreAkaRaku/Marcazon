@@ -1,4 +1,5 @@
 <?php
+include_once("components/elements.php");
 include_once("config/config.php");
 $Allproducts = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 ?>
@@ -9,16 +10,21 @@ include_once("config/head.php");
 ?>
 
 <body>
-    <div class="nav-bar">
+    <div class="nav-bar flex flex-row">
         <?php
+        $userIconStyle= '';
         if (!empty($_SESSION)) {
             $role = $_SESSION["role"];
             $nick = $_SESSION["nickname"];
             echo "<div class=\"user-icon\">UserIconIdentity</div>";
             echo "Bones, $nick";
-            $timePassed = time();
         } else {
             echo "<div class=\"user-icon\">UserIconNonIdentity</div>";
+            echo '<div class="flex flex-col text-center">';
+            a('signin.php',"Inicia Sessió","");
+            p("o bé","text-sm");
+            a('signup.php',"Registra't","");
+            echo '</div>';
         }
         ?>
         <div>Here there's gonna be the search bar</div>
