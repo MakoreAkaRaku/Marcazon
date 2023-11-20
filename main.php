@@ -10,7 +10,7 @@ include_once("config/head.php");
 ?>
 
 <body>
-    <div class="nav-bar flex flex-row">
+    <div class="nav-bar flex flex-row bg-teal-400">
         <?php
         $userIconStyle= '';
         if (!empty($_SESSION)) {
