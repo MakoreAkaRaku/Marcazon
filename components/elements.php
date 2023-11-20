@@ -63,4 +63,19 @@ function select($options, $name, $selClasses, $optClasses, bool $isRequired = fa
     echo '</select>';
 }
 
+function a($link,$text,$styleClasses)
+{
+    $basicStyleClasses= '';
+    echo '<a href="'.$link.'" ';
+    applyClasses($basicStyleClasses, $styleClasses);
+    echo '>'.$text.'</a>';
+}
+
+function p($text, $styleClasses)
+{
+    $basicStyleClasses = '';
+    echo '<p ';
+    applyClasses($basicStyleClasses, $styleClasses);
+    echo '>' . $text . '</p>';
+}
 ?>
