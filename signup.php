@@ -1,5 +1,4 @@
 <?php
-$roles = ["Comprador", "Venedor", "Controlador"];
 include_once("config/config.php");
 include_once("components/elements.php");
 $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
@@ -14,7 +13,11 @@ include_once("config/head.php");
   style="background-image: linear-gradient(45deg, #FC466B 0%, #3F5EFB 100%)">
   <div
     class="flex flex-col p-6 bg-black/70 w-full m-6 md:m-0 md:w-2/3 flex items-center justify-center rounded-lg max-w-md">
-    <?php h1("REGISTRAR-SE", "text-white text-center") ?>
+    <?php h1("REGISTRAR-SE", "text-white text-center");
+    if(!empty($_SESSION)){
+      echo "Session is not empty!";
+    }
+    ?>
     <form action="query/register.php" method="POST" class="flex flex-col gap-4 w-full ">
       <?php
       $inClasses = 'focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
@@ -24,7 +27,7 @@ include_once("config/head.php");
       ?>
       <div>
         <?php
-        select($roles, "role","bg-white/10 text-white", "text-black");
+        select($GLOBALS["roles"], "role","bg-white/10 text-white", "text-black");
         ?>
       </div>
       <?php
