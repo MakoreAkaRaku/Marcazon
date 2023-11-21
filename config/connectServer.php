@@ -10,7 +10,8 @@ $GLOBALS["conn"] = $conn;
 if (!$conn) {
     die("La connexió ha fallat: " . mysqli_connect_error());
 }
-function connect() : mysqli {
-
+function has_session()
+{
+    return !empty($_SESSION);
 }
 ?>
