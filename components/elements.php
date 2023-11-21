@@ -1,5 +1,4 @@
 <?php
-
 function applyClasses($mainClasses, $newlyClasses)
 {
     echo 'class="' . implode(' ', [$mainClasses, $newlyClasses]) . '"';
@@ -63,15 +62,15 @@ function select($options, $name, $selClasses, $optClasses, bool $isRequired = fa
     echo '</select>';
 }
 
-function a($link,$text,$styleClasses="")
+function a($link, $text, $styleClasses = "")
 {
-    $basicStyleClasses= '';
-    echo '<a href="'.$link.'" ';
+    $basicStyleClasses = '';
+    echo '<a href="' . $link . '" ';
     applyClasses($basicStyleClasses, $styleClasses);
-    echo '>'.$text.'</a>';
+    echo '>' . $text . '</a>';
 }
 
-function p($text, $styleClasses="")
+function p($text, $styleClasses = "")
 {
     $basicStyleClasses = '';
     echo '<p ';
@@ -79,32 +78,12 @@ function p($text, $styleClasses="")
     echo '>' . $text . '</p>';
 }
 
-function img($alt,$uri,$styleClasses="")
+function img($alt, $uri, $styleClasses = "")
 {
     $basicStyleClasses = '';
-    echo '<img alt="'.$alt.'" ';
+    echo '<img alt="' . $alt . '" ';
     applyClasses($basicStyleClasses, $styleClasses);
-    echo 'src="'.$uri.'">';
-}
-
-function custom_bg($role)
-{
-    $customClasses = 'bg-gradient-to-b bg-no-repeat bg-full bg-fixed ';
-    switch ($role) {
-        case 'Venedor':
-            $customClasses .= "from-red-500";
-            break;
-        case 'Comprador':
-            $customClasses .= "from-green-500";
-            break;
-        case 'Controlador':
-            $customClasses .= "from-orange-400";
-            break;
-        default:
-            $customClasses .= "from-indigo-400";
-    }
-    $customClasses .= " to-black";
-    echo $customClasses;
+    echo 'src="' . $uri . '">';
 }
 
 ?>
