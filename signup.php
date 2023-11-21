@@ -16,7 +16,7 @@ $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
   <div
     class="flex flex-col p-6 bg-black/70 w-full m-6 md:m-0 md:w-2/3 flex items-center justify-center rounded-lg max-w-md">
     <?php
-    a("./main.php", "➥ Inici", "flex px-2 py-2 bg-black text-xl text-white text-center self-start rounded-lg hover:bg-gray-900");
+    a("./main.php", "➥ Inici", "flex px-2 py-2 bg-black text-xl text-white justify-center w-full md:w-auto self-start rounded-lg hover:bg-gray-900");
     h1("REGISTRAR-SE", "text-white text-center");
     ?>
     <form action="query/register.php" method="POST" class="flex flex-col gap-4 w-full ">
@@ -25,18 +25,9 @@ $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
       input("text", "name", $inClasses, "Nom Cognom");
       input("text", "nickname", $inClasses, "Nickname", true);
       input("password", "pwd", $inClasses, "Contrasenya", true);
+      select($GLOBALS["roles"], "role", "bg-white/10 text-white", "text-black");
+      darkButton("submit", "flex justify-center self-center w-full md:w-40", "Registrar-se");
       ?>
-      <div>
-        <?php
-        select($GLOBALS["roles"], "role", "bg-white/10 text-white", "text-black");
-        ?>
-      </div>
-      <?php
-      darkButton("submit", "w-full md:hidden", "Registrar-se")
-        ?>
-      <div class="hidden md:flex flex-row w-full justify-center">
-        <?php darkButton("submit", "", "Registrar-se") ?>
-      </div>
     </form>
     <div class="mt-4 text-sm text-white text-center">
       <p>Ja tens un compte?
