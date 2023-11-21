@@ -2,9 +2,9 @@
 include_once("../config/config.php");
 function login($nick, $pwd, $role): bool
 {
-    include_once("../config/config.php");
     $query = "select nom from " . $role . " WHERE pwd='" . $pwd . "' AND nickname='" . $nick . "'";
-    if (mysqli_query($GLOBALS['conn'], $query)) {
+    $result = mysqli_query($GLOBALS['conn'], $query);
+    if (mysqli_fetch_array($result) != null) {
         session_start();
         $_SESSION['user'] = $nick;
         $_SESSION['pwd'] = $pwd;
@@ -16,7 +16,6 @@ function login($nick, $pwd, $role): bool
 
 function existUserType($nickname, $role)
 {
-    include_once('../config/config.php');
     $query = "select nickname from " . $role . " where nickname='" . $nickname . "';";
     $answ = mysqli_query($GLOBALS["conn"], $query);
     return mysqli_fetch_array($answ) != null;
@@ -31,7 +30,6 @@ function redirectIfSessionAlive()
 }
 function logout(): bool
 {
-    include_once("../config/config.php");
     session_start();
     unset($_SESSION['user']);
     unset($_SESSION['pwd']);
