@@ -75,11 +75,11 @@ function custom_bg()
 function applyMainNavBar()
 {
     
-    $mainClasses = "flex flex-row bg-teal-400 justify-between shadow-xl px-4";
+    $mainClasses = "px-2 flex flex-row bg-gradient-to-r from-cyan-500 to-blue-500 justify-between items-center shadow-xl text-white h-20";
     echo '<nav role="navigation" ';
     applyClasses($mainClasses, '');
     echo '>';
-    echo '<div class="flex flex-row inline-flex">';
+    echo '<div class="flex flex-row items-center ">';
     has_session() ? logged_in_gui($_SESSION['user']) : unlogged_gui();
     echo '</div>';
     echo "<div>Here there's gonna be the search bar</div>";
