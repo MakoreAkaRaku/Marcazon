@@ -63,7 +63,7 @@ function select($options, $name, $selClasses, $optClasses, bool $isRequired = fa
     echo '</select>';
 }
 
-function a($link,$text,$styleClasses)
+function a($link,$text,$styleClasses="")
 {
     $basicStyleClasses= '';
     echo '<a href="'.$link.'" ';
@@ -71,11 +71,20 @@ function a($link,$text,$styleClasses)
     echo '>'.$text.'</a>';
 }
 
-function p($text, $styleClasses)
+function p($text, $styleClasses="")
 {
     $basicStyleClasses = '';
     echo '<p ';
     applyClasses($basicStyleClasses, $styleClasses);
     echo '>' . $text . '</p>';
 }
+
+function img($alt,$uri,$styleClasses="")
+{
+    $basicStyleClasses = '';
+    echo '<img alt="'.$alt.'" ';
+    applyClasses($basicStyleClasses, $styleClasses);
+    echo 'src="'.$uri.'">';
+}
+
 ?>
