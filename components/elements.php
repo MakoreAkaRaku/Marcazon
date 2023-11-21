@@ -87,4 +87,24 @@ function img($alt,$uri,$styleClasses="")
     echo 'src="'.$uri.'">';
 }
 
+function custom_bg($role)
+{
+    $customClasses = 'bg-gradient-to-b bg-no-repeat bg-full bg-fixed ';
+    switch ($role) {
+        case 'Venedor':
+            $customClasses .= "from-red-500";
+            break;
+        case 'Comprador':
+            $customClasses .= "from-green-500";
+            break;
+        case 'Controlador':
+            $customClasses .= "from-orange-400";
+            break;
+        default:
+            $customClasses .= "from-indigo-400";
+    }
+    $customClasses .= " to-black";
+    echo $customClasses;
+}
+
 ?>
