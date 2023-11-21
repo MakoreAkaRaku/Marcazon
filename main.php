@@ -9,15 +9,16 @@ $Allproducts = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
 include_once("config/head.php");
 ?>
 
-<body>
-    <div class="nav-bar flex flex-row bg-teal-400">
+<body style="background-image: url('styles/pet-steve.jpg'); background-repeat: repeat;">
+    <div class="nav-bar flex flex-row justify-around bg-teal-400">
         <?php
         $userIconStyle= '';
         if (!empty($_SESSION)) {
-            $role = $_SESSION["role"];
-            $nick = $_SESSION["nickname"];
+            $nick = $_SESSION['user'];
+            $role = $_SESSION['role'];
             echo "<div class=\"user-icon\">UserIconIdentity</div>";
             echo "Bones, $nick";
+            a('query/logout.php','Tanca Sessió',""); //TMP
         } else {
             echo "<div class=\"user-icon\">UserIconNonIdentity</div>";
             echo '<div class="flex flex-col text-center">';
