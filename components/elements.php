@@ -37,7 +37,7 @@ function h1($text, $classes)
 
 function input($type, $name, $classes, $placeholder = '', bool $isRequired = false)
 {
-    $styleClasses = 'mt-1 p-2 w-full border rounded-md  focus:outline-none';
+    $styleClasses = 'w-full border rounded-md  focus:outline-none';
     echo '<input ';
     echo 'type="' . $type . '" ';
     echo 'id="' . $name . '" ' . 'name="' . $name . '" ';
@@ -49,7 +49,7 @@ function input($type, $name, $classes, $placeholder = '', bool $isRequired = fal
 
 function select($options, $name, $selClasses, $optClasses, bool $isRequired = false)
 {
-    $styleClasses = "mt-1 p-2 w-full border rounded-md  focus:outline-none";
+    $styleClasses = "w-full border rounded-md  focus:outline-none";
     echo '<select ';
     echo 'id="' . $name . '" name=" ' . $name . '" ';
     applyClasses($styleClasses, $selClasses);

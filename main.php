@@ -6,7 +6,7 @@ include_once("config/config.php");
 <html>
 <?php head(); ?>
 
-<body class="<?php custom_bg() ?>">
+<body class="bg-gray-900 antialiased">
     <?php
     applyMainNavBar();
     displayProducts();

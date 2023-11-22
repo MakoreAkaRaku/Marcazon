@@ -21,11 +21,11 @@ $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
     ?>
     <form action="query/register.php" method="POST" class="flex flex-col gap-4 w-full ">
       <?php
-      $inClasses = 'focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
+      $inClasses = 'p-2 mt-1 focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
       input("text", "name", $inClasses, "Nom Cognom");
       input("text", "nickname", $inClasses, "Nickname", true);
       input("password", "pwd", $inClasses, "Contrasenya", true);
-      select($GLOBALS["roles"], "role", "bg-white/10 text-white", "text-black");
+      select($GLOBALS["roles"], "role", "p-2 mt-1 bg-white/10 text-white", "text-black");
       darkButton("submit", "flex justify-center self-center w-full md:w-40", "Registrar-se");
       ?>
     </form>
