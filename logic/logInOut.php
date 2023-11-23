@@ -16,7 +16,7 @@ function login($nick, $pwd, $role): bool
 
 function existUserType($nickname, $role)
 {
-    $query = "select nickname from " . $role . " where nickname='" . $nickname . "';";
+    $query = "select nickname from $role where nickname='$nickname';";
     $answ = mysqli_query($GLOBALS["conn"], $query);
     return mysqli_fetch_array($answ) != null;
 }
