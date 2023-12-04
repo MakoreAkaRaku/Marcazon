@@ -145,3 +145,20 @@ CREATE TABLE Repartiment (
     CONSTRAINT FOREIGN KEY(idCom) REFERENCES Comanda(idCom),
     CONSTRAINT FOREIGN KEY(idRep) REFERENCES Repartidor(idRep)
 );
+
+DELIMITER //
+CREATE PROCEDURE avisa(IN idControler)
+BEGIN
+    declare varcursor CURSOR FOR
+    SELECT idItem,data FROM comanda inner join item ON comanda.idCom = item.idCom
+    WHERE DATEDIFF(data,NOW()) = 5;
+    declare continue handler for not found set sortir=1;
+    set sortir=0;
+    open varcursor;
+    iteracio: LOOP
+    insert into avis (idContr,idItem,descripcio)
+    VALUE (,,"Your item delivered to the main storage has already expired");
+    END LOOP;
+    CLOSE varcursor;
+END;
+DELIMITER ;
