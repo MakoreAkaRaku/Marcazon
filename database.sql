@@ -162,3 +162,54 @@ BEGIN
     CLOSE varcursor;
 END;
 DELIMITER ;
+
+
+/*
+CREATE PROCEDURE XXX() BEGIN VARIABLES; 
+	variables;
+	cursors;
+	tractament d 'errors;
+	    obrir cursor;
+	    loop;
+	    	llegir cursor;
+	        controlar error cursor;
+	        logica del programa;
+	  	end loop;
+	   	tancar cursor;
+	end;
+
+*/
+
+
+/*
+delimiter / /
+
+CREATE PROCEDURE XXX() BEGIN DECLARE 
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE a CHAR(16);
+	DECLARE b, c INT;
+	DECLARE participants_best_temps CURSOR FOR
+	SELECT
+	    idciclista,
+	    sec_to_time(sum(time_to_sec(temps))) AS total,
+	    etapa
+	FROM ciclista
+	    JOIN participa on ciclista.idciclista = participa.etapa
+	)
+	ORDER BY participa.temps ASC;
+	tractament d 'errors;
+	    obrir cursor;
+	    classificat=1;
+	    loop;
+	    	llegir cursor;
+	        controlar error cursor;
+	        SEC_TO_TIME()
+	        if classificat=1 then insereix sense dif;
+	        else insereix amb dif;
+	  	end loop;
+	   	tancar cursor;
+	end;
+
+
+delimiter / /
+*/
