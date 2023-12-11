@@ -24,7 +24,7 @@ function existUserType($nickname, $role)
 function redirectIfSessionAlive()
 {
     if (!empty($_SESSION)) {
-        header('location: /Marcazon/main.php');
+        header('location: /Marcazon/index.php');
         exit;
     }
 }
