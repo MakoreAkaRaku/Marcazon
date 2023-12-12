@@ -6,6 +6,6 @@ if (!empty($_SESSION)) {
         die("Something is of... did you login correctly..?");
     }
 }
-header('location: /Marcazon/index.php');
+header('location: /Marcazon/');
 exit;
 ?>

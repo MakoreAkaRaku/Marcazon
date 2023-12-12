@@ -6,7 +6,7 @@ if (!empty($_POST)) {
     foreach ($GLOBALS["roles"] as $role) {
         if (existUserType($nickname, $role)) {
             if (login($nickname, $pwd, $role)) {
-                header('location: /Marcazon/index.php');
+                header('location: /Marcazon/');
                 exit;
             } else {
                 die("Wrong password or nickname");

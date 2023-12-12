@@ -2,7 +2,7 @@
 include_once("components/reusable.php");
 include_once("config/config.php");
 if (!empty($_SESSION)) {
-  header('location: /Marcazon/index.php');
+  header('location: /Marcazon/');
   exit;
 }
 
@@ -17,7 +17,7 @@ $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
   <div
     class="flex flex-col p-6 bg-black/70 w-full m-6 md:m-0 md:w-2/3 flex items-center justify-center rounded-lg max-w-md">
     <?php
-    a("./index.php", "➥ Inici", "flex px-2 py-2 bg-black text-xl text-white justify-center w-full md:w-auto self-start rounded-lg hover:bg-gray-900");
+    a("./", "➥ Inici", "flex px-2 py-2 bg-black text-xl text-white justify-center w-full md:w-auto self-start rounded-lg hover:bg-gray-900");
     h1("INICIAR SESSIÓ", "text-white text-center")
       ?>
     <form action="query/login.php" method="POST" class="flex flex-col gap-4 w-full ">

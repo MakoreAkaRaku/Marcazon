@@ -11,7 +11,7 @@ if (!empty($_POST)) {
         $query .= '(nom, nickname, pwd, estatVen) VALUES("' . $name . '","' . $nickname . '","' . $pwd . '","BO");';
     if (!existUserType($nickname, $role) and mysqli_query($GLOBALS["conn"], $query)) {
         login($nickname, $pwd, $role);
-        header('location: /Marcazon/index.php');
+        header('location: /Marcazon/');
         exit;
     } else {
         mysqli_error($GLOBALS["conn"]);
