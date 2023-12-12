@@ -146,6 +146,9 @@ CREATE TABLE Repartiment (
     CONSTRAINT FOREIGN KEY(idRep) REFERENCES Repartidor(idRep)
 );
 
+
+INSERT INTO producte ()
+
 DELIMITER //
 CREATE PROCEDURE avisa(IN idControler)
 BEGIN
