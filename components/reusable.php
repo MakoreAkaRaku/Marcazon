@@ -24,9 +24,9 @@ function displayProducts()
     echo '</div>';
 }
 
-function logged_in_gui($nick,$role)
+function logged_in_gui($nick, $role)
 {
-    img("user icon","styles/user$role.png","w-20 h-20 grayscale");
+    img("user icon", "styles/user$role.png", "w-20 h-20 grayscale");
     $time = date("G", time());
     if ($time >= 20) {
         $welcomeUser = "Bona nit";
@@ -35,12 +35,12 @@ function logged_in_gui($nick,$role)
     } else {
         $welcomeUser = "Bon dia";
     }
-    p($welcomeUser . ", " . $nick,"w-full");
-    a('query/logout.php', 'Tanca Sessió', "w-full"); //FIXME
+    p($welcomeUser . ", " . $nick, "text-center flex justify-center items-center w-full h-full");
+    a('query/logout.php', 'Tanca Sessió', "text-center w-full hover:bg-blue-600"); //FIXME
 }
 function unlogged_gui()
 {
-    img("user icon","styles/defaultUser.png","w-20 h-20 grayscale");
+    img("user icon", "styles/defaultUser.png", "w-20 h-20 grayscale");
     echo '<div class="flex flex-col text-center w-full">';
     a('signin.php', "Inicia Sessió", "");
     p("o bé", "text-sm");
@@ -51,41 +51,52 @@ function unlogged_gui()
 function addNavSearchBar()
 {
     echo '<form class="px-4 w-full">';
-    input('search','product-search','p-4 placeholder-gray-400 text-sm text-white bg-cyan-800 border-none dark:text-white',"Cerca productes...");
-    echo '<button class="absolute right-16 p-4 bg-blue-800 hover:bg-blue-900 rounded-md" type="submit">';
+    input('search', 'product-search', 'p-4 placeholder-gray-400 text-sm text-white bg-cyan-800 border-none dark:text-white', "Cerca productes...");
+    echo '<button class="absolute right-16 p-4 bg-blue-800 hover:bg-blue-600 rounded-md" type="submit">';
     /*echo '<svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
 </svg>';*/
-    img("search icon","styles/search.svg","w-5 h-5");
+    img("search icon", "styles/search.svg", "w-5 h-5");
     echo '</button>';
     echo '</form>';
 }
 
-function applyMainNavBar()
+function applyMainNavBar($isIndex)
 {
-    
-    $mainClasses = "px-2 flex flex-row bg-gradient-to-r from-cyan-500 to-blue-500 items-center shadow-2xl text-white h-20";
+
+    $mainClasses = "px-2 flex flex-row bg-gradient-to-r from-cyan-500 to-blue-500 items-center justify-between shadow-2xl text-white h-20";
     echo '<nav role="navigation" ';
     applyClasses($mainClasses, '');
     echo '>';
-    echo '<div class="flex flex-row items-center shrink-0">';
-    has_session() ? logged_in_gui($_SESSION['user'],$_SESSION['role']) : unlogged_gui();
+    echo '<div class="flex flex-row items-center justify-stretch shrink-0">';
+    has_session() ? logged_in_gui($_SESSION['user'], $_SESSION['role']) : unlogged_gui();
     echo '</div>';
-    echo "<div class=\"flex flex-row w-full justify-around\">";
-    addNavSearchBar();
+    echo "<div class=\"flex flex-row h-full w-full items-center justify-end\">";
+    getcwd();
+    if ($isIndex) {
+        addNavSearchBar();
+    }
     if (has_session()) {
-        $role = $_SESSION['role'];
-        $srcImg = 'styles/';
-        if ($role == 'Comprador')
+        if ($isIndex)
         {
-            echo "<div>";
-            img("carret de compra","styles/basket.svg","h-10 w-10");
-            echo "</div>";
+            $role = $_SESSION['role'];
+            $srcImg = 'styles/';
+            if ($role == 'Comprador')
+            {
+                echo "<div>";
+                img("carret de compra", "styles/basket.svg", "h-10 w-10");
+                echo "</div>";
+            }
+            $srcImg .= ($role == 'Venedor') ? "price-tag.svg" : "control-opt.svg";
+            $href = $role == 'Venedor' ? "addProduct.php" : "ControlPanel.php";
+            echo "<a href=\"$href\" class=\"flex items-stretch rounded-full justify-stretch hover:bg-blue-600\">";
+            img($role . ' options', $srcImg, "h-14 w-10");
+            echo "</a>";
         } 
-        $srcImg .= ($role == 'Venedor') ? "price-tag.svg" : "control-opt.svg";
-        echo "<div>";
-        img($role . ' options', $srcImg, "h-10 w-10");
-        echo "</div>";
+        else 
+        {
+            a("/Marcazon", "➥", "flex justify-center items-center text-center h-full text-5xl");
+        }
     }
     echo "</div>";
     echo '</nav>';

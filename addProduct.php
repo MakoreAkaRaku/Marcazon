@@ -12,7 +12,7 @@ if (!has_session() || $_SESSION['role'] != "Venedor") {
 
 <body class="bg-gray-900 antialiased">
     <?php
-    applyMainNavBar();
+    applyMainNavBar(false);
     displayProducts();
     ?>
 </body>

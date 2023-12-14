@@ -8,7 +8,7 @@ include_once("config/config.php");
 
 <body class="bg-gray-900 antialiased">
     <?php
-    applyMainNavBar();
+    applyMainNavBar(true);
     displayProducts();
     ?>
 </body>
