@@ -175,6 +175,39 @@ BEGIN
 END;
 DELIMITER ;
 
+/*
+create procedure nota_final()
+BEGIN
+    declare superaminims,acabar int;
+    declare actPonder float;
+    declare actEstudiant int;
+    declare notaAct float;
+    declare varcursor CURSOR FOR
+    select idProva,idEstudiant,nota,minim,pes from nota JOIN prova on prova.idProva = nota.idProva ORDER BY idEstudiant;
+    declare continue handler for not found;
+    set acabar=1;
+    open varcursor;
+    iteracio: LOOP
+    set actEstudiant = -1;
+    fetch varcursor into var_prova,var_estudiant,var_nota_estudiant,var_nota_min,var_pes;
+    if acabar=1 THEN
+        leave iteracio;
+    end if;
+    if (actEstudiant != var_estudiant && actEstudiant != -1)
+        update estudiant notafinal=notaAct where idEstudiant=actEstudiant;
+        notaAct = 0;
+        actPonder = 0;
+    else
+        if (var_nota_estudiant < var_nota_min)
+            superaminims = 0;
+        end if;
+
+    end if;
+    actEstudiant = var_estudiant;
+    END LOOP iteracio;
+    close varcursor;
+END;
+*/
 
 /*
 CREATE PROCEDURE XXX() BEGIN VARIABLES; 
