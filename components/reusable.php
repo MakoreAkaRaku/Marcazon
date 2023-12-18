@@ -12,7 +12,8 @@ function head()
 }
 function displayProducts()
 {
-    $Allproducts = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
+    $productClasses = "";
+    $Allproducts = mysqli_query($GLOBALS["conn"], "SELECT * FROM Stock");
     echo '<div class="category-filter">';
     //TODO
     echo '</div>';
@@ -50,9 +51,9 @@ function unlogged_gui()
 
 function addNavSearchBar()
 {
-    echo '<form class="px-4 w-full">';
+    echo '<form class="flex px-4 w-full">';
     input('search', 'product-search', 'p-4 placeholder-gray-400 text-sm text-white bg-cyan-800 border-none dark:text-white', "Cerca productes...");
-    echo '<button class="absolute right-16 p-4 bg-blue-800 hover:bg-blue-600 rounded-md" type="submit">';
+    echo '<button class="flex p-4 bg-blue-800 hover:bg-blue-600 rounded-md" type="submit">';
     /*echo '<svg class="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
 </svg>';*/
@@ -71,25 +72,25 @@ function applyMainNavBar($isIndex)
     echo '<div class="flex flex-row items-center justify-stretch shrink-0">';
     has_session() ? logged_in_gui($_SESSION['user'], $_SESSION['role']) : unlogged_gui();
     echo '</div>';
-    echo "<div class=\"flex flex-row h-full w-full items-center justify-end\">";
-    getcwd();
+    echo "<div class=\"flex flex-row h-full w-full p-2 items-center justify-end\">";
     if ($isIndex) {
         addNavSearchBar();
     }
     if (has_session()) {
         if ($isIndex)
         {
+            $linkClasses= "px-2 flex items-stretch rounded-full justify-stretch hover:bg-blue-600";
             $role = $_SESSION['role'];
             $srcImg = 'styles/';
             if ($role == 'Comprador')
             {
-                echo "<div>";
+                echo "<a href=\"basket.php\" class=\"$linkClasses\">";
                 img("carret de compra", "styles/basket.svg", "h-10 w-10");
-                echo "</div>";
+                echo "</a>";
             }
             $srcImg .= ($role == 'Venedor') ? "price-tag.svg" : "control-opt.svg";
             $href = $role == 'Venedor' ? "addProduct.php" : "ControlPanel.php";
-            echo "<a href=\"$href\" class=\"flex items-stretch rounded-full justify-stretch hover:bg-blue-600\">";
+            echo "<a href=\"$href\" class=\"$linkClasses\">";
             img($role . ' options', $srcImg, "h-14 w-10");
             echo "</a>";
         } 
@@ -100,5 +101,10 @@ function applyMainNavBar($isIndex)
     }
     echo "</div>";
     echo '</nav>';
+}
+
+function displayBasket()
+{
+
 }
 ?>

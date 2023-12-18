@@ -146,6 +146,15 @@ CREATE TABLE Repartiment (
     CONSTRAINT FOREIGN KEY(idRep) REFERENCES Repartidor(idRep)
 );
 
+insert into zona (nomZona, longitud, latitud) values
+("Palma de Mallorca",123132,1231451),
+("Es Pla",45747,2352352),
+("Mitjorn",34533,54745),
+("Es Raiguer",345723,343457),
+("Serra de Tramuntana",23683,93453),
+("Llevant",23576,43363);
+
+insert into 
 
 INSERT INTO producte ()
 
