@@ -158,8 +158,9 @@ insert into
 
 INSERT INTO producte ()
 
+
 DELIMITER //
-CREATE PROCEDURE avisa(IN idControler)
+CREATE PROCEDURE avisa(IN idControler, IN idItem)
 BEGIN
     declare varcursor CURSOR FOR
     SELECT idItem,data FROM comanda inner join item ON comanda.idCom = item.idCom
@@ -174,6 +175,32 @@ BEGIN
     CLOSE varcursor;
 END;
 DELIMITER ;
+
+select item.idItem from Comanda
+            join item on Comanda.pagat = true 
+            AND item.idCom = Comanda.idCom 
+            AND item.idItem NOT IN (SELECT idItem from Avis) -- Si l'item ja ha sigut avisat, no l'incloem...
+
+delimiter //
+create procedure afegeix_avis(IN idContr INT, IN idItem INT)
+BEGIN
+    declare item INT;
+    
+    select idItem into item 
+    from item 
+    join comanda on comanda.idCom = item.idCompr
+    where item.idItem = idItem 
+        and pagat = true 
+        and DATEDIFF(comanda.dataPagat, NOW()) >= 5;
+
+    if (item = idItem) then
+        insert into avis (idContr, idItem, descripcio) 
+        values (idContr, idItem, "Aquest item hauria d'haver sigut entregat al magatzem principal");
+    end if;
+END //
+delimiter ;
+
+
 
 /*
 create procedure nota_final()
