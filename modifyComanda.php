@@ -6,10 +6,10 @@ include_once("config/config.php");
 <html>
 <?php head(); ?>
 
-<body class="bg-gray-900 antialiased w-screen h-screen">
+<body class="bg-gray-900 antialiased">
     <?php
     applyMainNavBar(true);
-    empty($_GET["idProd"]) ? displayProducts(): displayProduct($_GET["idProd"]);
+    empty($_POST["idProd"]) ?  "" : modifyProducteComanda($_POST["idProd"]);
     ?>
 </body>
 

@@ -22,9 +22,9 @@ $products = mysqli_query($GLOBALS["conn"], "SELECT * FROM Producte");
       ?>
     <form action="query/login.php" method="POST" class="flex flex-col gap-4 w-full ">
       <?php
-      $inClasses = 'p-2  mt-1 focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
-      input("text", "nickname", $inClasses, "Nickname", true);
-      input("password", "pwd", $inClasses, "Contrasenya", true);
+      $inClasses = 'p-2 w-full mt-1 focus:border-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300';
+      input("text", "nickname", $inClasses,"","Nickname", true);
+      input("password", "pwd", $inClasses,"","Contrasenya", true);
       darkButton("submit", "flex justify-center self-center w-full md:w-40", "Entra")
       ?>
     </form>

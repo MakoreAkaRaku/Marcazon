@@ -14,4 +14,30 @@ function has_session()
 {
     return !empty($_SESSION);
 }
+
+function redirectIfSessionAlive()
+{
+    if (has_session()) {
+        header('location: /Marcazon/');
+        exit;
+    }
+}
+
+function redirectIfSessionNotAlive()
+{
+    if(!has_session())
+    {
+        header('location: /Marcazon/');
+        exit;
+    }
+}
+
+function redirectIfUserIsNotRoleType($role)
+{
+    if($_SESSION['role'] != $role)
+    {
+        header('location: /Marcazon/');
+        exit;
+    }
+}
 ?>

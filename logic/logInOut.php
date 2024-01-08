@@ -2,10 +2,25 @@
 include_once("../config/config.php");
 function login($nick, $pwd, $role): bool
 {
-    $query = "select nom from " . $role . " WHERE pwd='" . $pwd . "' AND nickname='" . $nick . "'";
+    switch($role){
+        case 'Venedor':
+            $attribute = "idVen";    
+            break;
+        case'Comprador':
+            $attribute = "idCompr";
+            break;
+        case 'Controlador':
+            $attribute = "idContr";
+            break;
+        default:
+            $attribute = "err";
+    }
+    $query = "select $attribute AS id,nom from " . $role . " WHERE pwd='" . $pwd . "' AND nickname='" . $nick . "'";
     $result = mysqli_query($GLOBALS['conn'], $query);
-    if (mysqli_fetch_array($result) != null) {
+    if ($ans=mysqli_fetch_array($result)) {
         session_start();
+        $_SESSION["userid"] = $ans["id"];
+        $_SESSION["name"] = $ans["name"];
         $_SESSION['user'] = $nick;
         $_SESSION['pwd'] = $pwd;
         $_SESSION['role'] = $role;
@@ -21,19 +36,14 @@ function existUserType($nickname, $role)
     return mysqli_fetch_array($answ) != null;
 }
 
-function redirectIfSessionAlive()
-{
-    if (!empty($_SESSION)) {
-        header('location: /Marcazon/');
-        exit;
-    }
-}
 function logout(): bool
 {
     session_start();
+    unset($_SESSION["userid"]);
     unset($_SESSION['user']);
     unset($_SESSION['pwd']);
     unset($_SESSION['role']);
+    unset($_SESSION['name']);
     return session_destroy();
 }
 ?>
