@@ -291,7 +291,7 @@ function displayBasket($comanda, $estatComprant)
             $result = mysqli_query($GLOBALS["conn"], $query);
             while ($itemDetails = mysqli_fetch_array($result)) {
                 $cost += $itemDetails['qtt'] * $itemDetails['preu'];
-                echo '<div class="flex flex-col p-4 w-92 border fit bg-black/40">';
+                echo '<div class="flex flex-col my-4 p-4 w-96 border fit bg-black/40">';
                 echo '<div class="flex flex-row justify-between items-center">';
                 displayProductImage($itemDetails['nomProducte'], $itemDetails['pathImg'], "w-20 h-20");
                 p($itemDetails['nomProducte'], "text-2xl fit px-4");
@@ -375,10 +375,13 @@ function displayDomicilis()
             $liClasses = "p-2 rounded-md flex flex-row w-92 justify-between items-center hover:bg-gray-900";
             echo '<ul class="ml-4 rounded-md flex flex-col w-92 h-80 bg-gray-800 overflow-y-scroll">';
             while ($domicili = mysqli_fetch_array($response)) {
-                echo '<li class="' . $liClasses . '">';
+                echo '<form method="POST" action="query/deleteDomicili.php" class="' . $liClasses . '">';
                 p($domicili['carrer'] . ", " . $domicili['numCasa'] . ", " . $domicili['numPis'] . ", " . $domicili['nomPoble']);
-                a("query/deleteDomicili.php?domicili=" . $domicili["idDomicili"], "Eliminar", "p-2 rounded-md bg-red-500 hover:bg-red-700");
-                echo '</li>';
+                input("hidden","idDomicili","",$domicili["idDomicili"]);
+                echo '<button type="submit" class="p-2 rounded-md bg-red-500 hover:bg-red-700">';
+                echo 'Eliminar';
+                echo '</button>';
+                echo '</form>';
             }
             echo '</ul>';
         } else {

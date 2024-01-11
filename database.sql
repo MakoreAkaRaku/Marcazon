@@ -1,6 +1,6 @@
-CREATE DATABASE Marcazon2;
+CREATE DATABASE Marcazon;
 
-USE Marcazon2;
+USE Marcazon;
 
 CREATE TABLE EstatComanda(estatC varchar(30) PRIMARY KEY);
 
@@ -9,14 +9,14 @@ INSERT INTO
 VALUES
     ('Comprant'),
     ('Entregat'),
-('Cancelat'),
-('En Repartiment'),
-('Enviat'),
-('Pendent de enviar'),
-('Pendent de pagar'),
-('Pagat'),
-('No rebut'),
-('Enviant-se');
+    ('Cancelat'),
+    ('En Repartiment'),
+    ('Enviat'),
+    ('Pendent de enviar'),
+    ('Pendent de pagar'),
+    ('Pagat'),
+    ('No rebut'),
+    ('Enviant-se');
 
 CREATE TABLE EstatVenedor(estat varchar(10) PRIMARY KEY);
 
@@ -189,8 +189,8 @@ CREATE TRIGGER modif_Com BEFORE UPDATE ON Comanda FOR EACH ROW
         SET NEW.dataModif = NOW();
         IF (NEW.estatC = 'Pendent de pagar') THEN
             IF (NEW.haPagat = TRUE) THEN
-                NEW.dataPagat = NOW;
-                NEW.estatC = 'Pagat';
+                SET NEW.dataPagat = NOW();
+                SET NEW.estatC = 'Pagat';
             END IF;
         END IF;
     END //
@@ -431,45 +431,45 @@ INSERT INTO Domicili (numPis,carrer,numCasa,codiPostal,propietari) VALUES
 ;
 
 INSERT INTO Stock (propietari,nomProd,qttProd,preu) VALUES
-(FLOOR(RAND()*(11)+1),'Taça Veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Destornillador Alfa',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Memoria SSD 32GB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Ordinador Pro Gaming MSI 3200K',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Pokemon Diamante',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Pokemon Esmeralda',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Pokemon Perla',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'The Legend of Zelda Phantom Hourglass',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Huawei Favicom',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Carregador Tipus C',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Huawei Favicom',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Portatil Asus 2000',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Penjoll alafeuria',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Anell 9.25k plata',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Microones',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Joc de cartes "Cuando el Pueblo duerme"',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Taça veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Taça veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Puzzle de Hanna Montana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Joc de cartes "Cuando el Pueblo duerme"',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Portatil Asus 2000',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Nevera Samsung 231I40',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Ordinador Pro Gaming MSI 3200K',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100),
-(FLOOR(RAND()*(11)+1),'Microones',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+RAND()*100)
+(FLOOR(RAND()*(11)+1),'Taça Veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Destornillador Alfa',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Memoria SSD 32GB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Ordinador Pro Gaming MSI 3200K',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Pokemon Diamante',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Pokemon Esmeralda',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Pokemon Perla',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'The Legend of Zelda Phantom Hourglass',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Huawei Favicom',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Carregador Tipus C',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Huawei Favicom',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Portatil Asus 2000',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Penjoll alafeuria',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Anell 9.25k plata',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Microones',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Joc de cartes "Cuando el Pueblo duerme"',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Taça veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Taça veneciana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Puzzle de Hanna Montana',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Joc de cartes "Cuando el Pueblo duerme"',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Monopoly',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Portatil Asus 2000',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Nevera Samsung 231I40',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Magic the Gathering Edicio Phyrexia 30 sobres',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Memoria SSD 1TB',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Ordinador Pro Gaming MSI 3200K',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Televisor de plasma',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Catan',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2)),
+(FLOOR(RAND()*(11)+1),'Microones',FLOOR(RAND()*(100)+1),FLOOR(RAND()*(50)+1)+ROUND(RAND()*100,2))
 ;
 
 DELIMITER //
@@ -593,135 +593,61 @@ BEGIN
 END //
 DELIMITER ;
 
-DELIMITER //
-CREATE EVENT backup_comandes
-ON SCHEDULE EVERY 1 MINUTE
-    DO
-      START TRANSACTION;
-            DECLARE v_pagat,finished BOOLEAN DEFAULT FALSE;
-            DECLARE v_distr,v_Com,v_Compr,v_Contr,lastbCom INT;
-            DECLARE estat varchar(30);
-            DECLARE v_dPagat,darreraModifB,darreraModif DATE;
-            DECLARE comanda_cursor CURSOR FOR SELECT * FROM Comanda ORDER BY Comanda.idCom DESC;
-            DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = TRUE;
-            DECLARE CONTINUE HANDLER FOR SQLEXCEPTION ROLLBACK;
-            CREATE TABLE IF NOT EXISTS backup_comanda LIKE comanda;
-            SELECT MAX(backup_comanda.idCom) INTO lastbCom FROM backup_comanda;
-            OPEN comanda_cursor;
-            -- Afegim els nous elements que no té el backup.
-            addNewElements: LOOP
-                FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
-                IF( finished = TRUE) THEN
-                    LEAVE addNewElements;
-                END IF;
-                IF (v_Com = lastbCom) THEN
-                    LEAVE addNewElements;
-                END IF;
-                INSERT INTO backup_comanda (idCom,idCompr,idContr,dataPagat,haPagat,estatC,idDistr,dataModif) 
-                    VALUES(v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif);
-            END LOOP addNewElements;
-            updateModifiedComanda: LOOP
-                IF(finished = TRUE) THEN
-                    LEAVE updateModifiedComanda;
-                END IF;
-                SELECT backup_comanda.dataModif INTO darreraModifB FROM backup_comanda WHERE backup_comanda.idCom = v_Com;
-                IF (darreraModifB <= darreraModif) THEN
-                    UPDATE backup_comanda 
-                    SET idCompr = v_Compr,
-                        idContr = v_Contr,
-                        dataPagat = v_dPagat,
-                        haPagat = v_pagat,
-                        estatC = estat,
-                        idDistr = v_distr,
-                        dataModif = darreraModif
-                    WHERE idCom = v_Com;
-                END IF;
-                FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
-            END LOOP updateModifiedComanda;
-            CLOSE comanda_cursor;      
-      COMMIT//
-
-DELIMITER ;
-
 SET GLOBAL event_scheduler=ON;
 
 DELIMITER //
-CREATE EVENT t_comandes
-ON SCHEDULE EVERY 1 MINUTE
+CREATE EVENT backup_comandes
+ON SCHEDULE EVERY 1 DAY
     DO
-      BEGIN
-            DECLARE v_pagat,finished BOOLEAN DEFAULT FALSE;
-            DECLARE v_distr,v_Com,v_Compr,v_Contr,lastbCom INT;
-            DECLARE estat varchar(30);
-            DECLARE v_dPagat,darreraModifB,darreraModif DATE;
-            DECLARE comanda_cursor CURSOR FOR SELECT * FROM Comanda ORDER BY Comanda.idCom DESC;
-            DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = TRUE;
-            DECLARE CONTINUE HANDLER FOR SQLEXCEPTION ROLLBACK;
-            CREATE TABLE IF NOT EXISTS backup_comanda LIKE comanda;
-            START TRANSACTION;
-            SELECT MAX(backup_comanda.idCom) INTO lastbCom FROM backup_comanda;
-            OPEN comanda_cursor;
-            -- Afegim els nous elements que no té el backup.
-            addNewElements: LOOP
-                FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
-                IF( finished = TRUE) THEN
-                    LEAVE addNewElements;
-                END IF;
-                IF (v_Com = lastbCom) THEN
-                    LEAVE addNewElements;
-                END IF;
-                INSERT INTO backup_comanda (idCom,idCompr,idContr,dataPagat,haPagat,estatC,idDistr,dataModif) 
-                    VALUES(v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif);
-            END LOOP addNewElements;
-            CLOSE comanda_cursor;
-            COMMIT;
-      END //
-
-DELIMITER ;
-
-DELIMITER //
-CREATE EVENT b_comanda ON SCHEDULE EVERY 1 MINUTE
-DO
-BEGIN
-            DECLARE v_pagat,finished BOOLEAN DEFAULT FALSE;
-            DECLARE v_distr,v_Com,v_Compr,v_Contr,lastbCom INT;
-            DECLARE estat varchar(30);
-            DECLARE v_dPagat,darreraModifB,darreraModif DATE;
-            DECLARE comanda_cursor CURSOR FOR SELECT * FROM Comanda ORDER BY Comanda.idCom DESC;
-            DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = TRUE;
-            DECLARE CONTINUE HANDLER FOR SQLEXCEPTION ROLLBACK;
-            CREATE TABLE IF NOT EXISTS backup_comanda LIKE comanda;
-            START TRANSACTION;
-            SELECT MAX(backup_comanda.idCom) INTO lastbCom FROM backup_comanda;
-            OPEN comanda_cursor;
-            -- Afegim els nous elements que no té el backup.
-            addNewElements: LOOP
-                FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
-                IF( finished = TRUE OR v_Com = lastbCom ) THEN
-                    LEAVE addNewElements;
-                END IF;
-                INSERT INTO backup_comanda (idCom,idCompr,idContr,dataPagat,haPagat,estatC,idDistr,dataModif) 
-                    VALUES(v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif);
-            END LOOP addNewElements;
-            updateModifiedComanda: LOOP
-                IF(finished = TRUE) THEN
-                    LEAVE updateModifiedComanda;
-                END IF;
-                SELECT backup_comanda.dataModif INTO darreraModifB FROM backup_comanda WHERE backup_comanda.idCom = v_Com;
-                IF (darreraModifB < darreraModif) THEN
-                    UPDATE backup_comanda 
-                    SET idCompr = v_Compr,
-                        idContr = v_Contr,
-                        dataPagat = v_dPagat,
-                        haPagat = v_pagat,
-                        estatC = estat,
-                        idDistr = v_distr,
-                        dataModif = darreraModif
-                    WHERE idCom = v_Com;
-                END IF;
-                FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
-            END LOOP updateModifiedComanda;
-            CLOSE comanda_cursor;
-            COMMIT;
-      END//
+    BEGIN
+        DECLARE v_pagat,finished BOOLEAN;
+        DECLARE v_distr,v_Com,v_Compr,v_Contr,lastbCom INT;
+        DECLARE estat varchar(30);
+        DECLARE v_dPagat,darreraModifB,darreraModif DATE;
+        
+        DECLARE comanda_cursor CURSOR FOR SELECT idCom,idCompr,idContr,dataPagat,haPagat,estatC,idDistr,dataModif FROM Comanda ORDER BY idCom DESC;
+        DECLARE CONTINUE HANDLER FOR NOT FOUND SET finished = TRUE;
+        DECLARE CONTINUE HANDLER FOR SQLEXCEPTION ROLLBACK;
+        
+        CREATE TABLE IF NOT EXISTS backup_comanda LIKE comanda;
+        
+        START TRANSACTION;
+        SELECT MAX(backup_comanda.idCom) INTO lastbCom FROM backup_comanda;
+        SET finished = FALSE;
+        
+        OPEN comanda_cursor;
+        -- Afegim els nous elements que no té el backup.
+        addNewElements: LOOP
+            FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
+            IF( finished = TRUE) THEN
+                LEAVE addNewElements;
+            END IF;
+            IF (v_Com = lastbCom) THEN
+                LEAVE addNewElements;
+            END IF;
+            INSERT INTO backup_comanda (idCom,idCompr,idContr,dataPagat,haPagat,estatC,idDistr,dataModif) 
+                VALUES(v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif);
+        END LOOP addNewElements;
+        -- Modificam els elements ja existents que han sofrit canvis.
+        updateModifiedComanda: LOOP
+            IF(finished = TRUE) THEN
+                LEAVE updateModifiedComanda;
+            END IF;
+            SELECT backup_comanda.dataModif INTO darreraModifB FROM backup_comanda WHERE backup_comanda.idCom = v_Com;
+            IF (darreraModifB <= darreraModif) THEN
+                UPDATE backup_comanda 
+                SET idCompr = v_Compr,
+                    idContr = v_Contr,
+                    dataPagat = v_dPagat,
+                    haPagat = v_pagat,
+                    estatC = estat,
+                    idDistr = v_distr,
+                    dataModif = darreraModif
+                WHERE idCom = v_Com;
+            END IF;
+            FETCH comanda_cursor INTO v_Com,v_Compr,v_Contr,v_dPagat,v_pagat,estat,v_distr,darreraModif;
+        END LOOP updateModifiedComanda;
+        CLOSE comanda_cursor;     
+        COMMIT;
+    END //
 DELIMITER ;

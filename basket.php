@@ -20,18 +20,20 @@ redirectIfUserIsNotRoleType("Comprador");
     } else {
         $query = "SELECT idCom from Comanda WHERE comanda.idCompr =" . $_SESSION["userid"] . " AND comanda.estatC = 'Comprant';";
         try {
-            if ($ans = mysqli_fetch_array(mysqli_query($GLOBALS["conn"], $query)))
+            if ($ans = mysqli_fetch_array(mysqli_query($GLOBALS["conn"], $query))) {
                 $comanda = $ans['idCom'];
-            $query = "SELECT COUNT(item.idItem) AS qtt FROM Item JOIN Comanda ON Comanda.idCom = item.idCom WHERE item.idCom=$comanda;";
-            if (0 == mysqli_fetch_array(mysqli_query($GLOBALS["conn"], $query))['qtt'])
-                $comanda = "";
-        } catch (Exception $ex) //There is no actual comanda going.
-        {
+                $query = "SELECT COUNT(item.idItem) AS qtt FROM Item JOIN Comanda ON Comanda.idCom = item.idCom WHERE item.idCom=$comanda;";
+                if (0 == mysqli_fetch_array(mysqli_query($GLOBALS["conn"], $query))['qtt']) {
+                    $comanda = "";
+                }
+            }
+        } catch (Exception $ex) {
+            //There is no comanda for shopping.
             $comanda = "";
         }
     }
     if (!empty($comanda)) {
-        displayBasket($comanda,$estatComprant);
+        displayBasket($comanda, $estatComprant);
     } else {
         h1("Encara no has comprat res", "flex self-center text-white");
     }
@@ -41,7 +43,7 @@ redirectIfUserIsNotRoleType("Comprador");
         echo '<button type="submit" class="p-2 text-white text-2xl bg-blue-700 hover:bg-blue-900 rounded-md">';
         echo 'Confirma';
         echo '</button>';
-        echo '</form';
+        echo '</form>';
     }
     echo '</div>';
     echo '<div class="absolute top-32 right-2 text-white">';
